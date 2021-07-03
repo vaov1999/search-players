@@ -41,13 +41,15 @@ export default {
     },
     searchPlayer() {
       if (this.searchText.length > 2) {
-        fetch(
-          `https://vortex.worldofwarships.ru/api/accounts/search/${this.searchText}?limit=10`
-        )
-          .then((res) => res.json())
-          .then((res) => {
-            this.players = res.data;
-          });
+        if (/^[A-Za-z][A-Za-z0-9]*$/.test(this.searchText)) {
+          fetch(
+            `https://vortex.worldofwarships.ru/api/accounts/search/${this.searchText}?limit=10`
+          )
+            .then((res) => res.json())
+            .then((res) => {
+              this.players = res.data;
+            });
+        }
       } else {
         this.players = [];
       }
