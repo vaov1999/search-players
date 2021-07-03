@@ -42,11 +42,11 @@ export default {
     searchPlayer() {
       if (this.searchText.length > 2) {
         fetch(
-          `https://vortex.worldofwarships.ru/api/accounts/search/${this.searchText}/`
+          `https://vortex.worldofwarships.ru/api/accounts/search/${this.searchText}?limit=10`
         )
           .then((res) => res.json())
           .then((res) => {
-            this.players = res.data.slice(0, 10);
+            this.players = res.data;
           });
       } else {
         this.players = [];
