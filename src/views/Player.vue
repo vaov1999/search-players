@@ -3,7 +3,12 @@
     <div v-if="isLoading">Loading...</div>
     <template v-else>
       <h1>{{ playerData.name }}-{{ playerData.spa_id }}</h1>
-      <p>some data...</p>
+
+      <h3>Very beautiful data :3</h3>
+
+      <p v-for="(prop, index) in playerData.statistics" :key="index">
+        {{ prop }}
+      </p>
     </template>
   </div>
 </template>
